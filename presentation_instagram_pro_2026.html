@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Présentation : L'Analyse d'Instagram</title>
+    <style>
+        :root {
+            --insta-gradient: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            --bg: #050505;
+            --card-bg: #111111;
+            --accent: #bc1888;
+            --text: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+        body {
+            background-color: var(--bg); color: var(--text);
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            margin: 0; height: 100vh; overflow: hidden;
+            display: flex; flex-direction: column;
+        }
+
+        header {
+            padding: 1rem 2.5rem; background: #000; border-bottom: 1px solid #222;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+
+        #viewport {
+            flex-grow: 1; position: relative; display: flex;
+            justify-content: center; align-items: center; padding: 20px;
+        }
+
+        .slide {
+            position: absolute; width: 95%; max-width: 1100px;
+            background: var(--card-bg); border-radius: 25px; padding: 40px;
+            border: 1px solid #333; opacity: 0; visibility: hidden;
+            transform: translateY(20px); transition: all 0.5s ease;
+            max-height: 80vh; overflow-y: auto;
+        }
+
+        .slide.active { opacity: 1; visibility: visible; transform: translateY(0); }
+
+        h1 { font-size: 3.5rem; background: var(--insta-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 0 0 20px 0; text-transform: uppercase; }
+        h2 { font-size: 2.5rem; color: #fff; border-left: 8px solid var(--accent); padding-left: 20px; margin-bottom: 20px; text-transform: uppercase; }
+        p { font-size: 1.2rem; line-height: 1.6; color: #ccc; margin-bottom: 15px; }
+
+        /* INTRO SLIDE SPECIFIQUE */
+        .intro-slide {
+            text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center;
+        }
+        .intro-logo {
+            width: 150px; height: 150px; background: var(--insta-gradient);
+            border-radius: 35px; display: flex; align-items: center; justify-content: center;
+            font-size: 6rem; color: #fff; margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(188, 24, 136, 0.3);
+        }
+        .credits-list {
+            margin-top: 40px; border-top: 1px solid #333; padding-top: 20px; width: 80%;
+        }
+        .credits-list h3 { color: #888; text-transform: uppercase; letter-spacing: 2px; font-size: 1rem; }
+        .credits-list ul { list-style: none; padding: 0; font-weight: bold; font-size: 1.1rem; color: #fff; line-height: 2; }
+
+        /* COMPOSANTS INTERACTIFS */
+        .btn-box {
+            background: #222; color: #fff; padding: 12px 25px; border-radius: 12px;
+            cursor: pointer; display: inline-block; margin: 10px 5px;
+            border: 1px solid #444; font-weight: bold; transition: 0.3s;
+        }
+        .btn-box:hover { border-color: var(--accent); background: #2a2a2a; }
+
+        .hidden-content {
+            display: none; background: #000; padding: 20px; border-radius: 15px;
+            margin-top: 15px; border: 1px solid var(--accent); animation: fadeIn 0.4s;
+        }
+
+        .img-display {
+            width: 100%; max-width: 350px; border-radius: 15px;
+            margin: 15px auto; display: block; border: 1px solid #444;
+        }
+
+        /* FOOTER & COMPTEUR */
+        footer {
+            padding: 1.5rem 3rem; background: #000; border-top: 1px solid #222;
+            display: flex; justify-content: space-between; align-items: center;
+            position: relative;
+        }
+
+        #slide-count {
+            position: absolute; left: 50%; transform: translateX(-50%);
+            font-weight: 900; font-size: 1.4rem; color: #fff; font-family: monospace;
+        }
+
+        .nav-btn {
+            background: var(--insta-gradient); color: #fff; border: none;
+            padding: 12px 35px; border-radius: 10px; font-weight: bold; cursor: pointer;
+            z-index: 10;
+        }
+        
+        .nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div style="font-weight:900; letter-spacing: 1px; color: var(--accent);">STUDENT PRESENTATION // CLASS AUDIT</div>
+    </header>
+
+    <main id="viewport">
+        <div class="slide active intro-slide">
+            <div class="intro-logo">📸</div>
+            <h1 style="font-size:4rem;">INSTAGRAM</h1>
+            <p style="font-size:1.5rem; color:#fff;">Analyse Stratégique de l'Empire de l'Image (2010 - 2026)</p>
+            
+            <div class="credits-list">
+                <h3>Fait par :</h3>
+                <ul>
+                    <li>Nabil Ousseily</li>
+                    <li>Rami el Aro</li>
+                    <li>Peter Haydamous</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="slide">
+            <h2>Le Projet Burbn</h2>
+            <p>L'application initiale s'appelait Burbn. C'était un service complexe destiné à partager sa position géographique sur une carte.</p>
+            <p>Les fondateurs ont réalisé que les utilisateurs ignoraient la plupart des fonctions mais adoraient les filtres photo. Ils ont donc épuré le projet pour créer Instagram.</p>
+        </div>
+
+        <div class="slide">
+            <h2>Les Fondateurs</h2>
+            <p>Le succès d'Instagram repose sur le duo complémentaire de l'Université de Stanford :</p>
+            <p><strong>Kevin Systrom</strong>, le visionnaire en charge du design, et <strong>Mike Krieger</strong>, l'ingénieur responsable de l'infrastructure technique.</p>
+        </div>
+
+        <div class="slide">
+            <h2>Le Succès du Lancement</h2>
+            <p>Dès le 6 octobre 2010, il y a eu un succès immédiat et foudroyant. L'application a enregistré plus de 25 000 inscriptions en seulement 24 heures.</p>
+            <p>Cette réussite s'explique par la simplicité de l'interface et la possibilité de transformer instantanément une photo banale en une image artistique grâce aux filtres numériques.</p>
+        </div>
+
+        <div class="slide">
+            <h2>Acquisition par Facebook</h2>
+            <p>En 2012, Mark Zuckerberg rachète la plateforme pour 1 milliard de dollars.</p>
+            <p>À l'époque, l'entreprise ne comptait que 13 employés. C'était un pari stratégique massif sur l'avenir de la photographie mobile.</p>
+        </div>
+
+        <div class="slide">
+            <h2>La Première Publication</h2>
+            <p>Cette photo a été publiée par Kevin Systrom en juillet 2010 lors des phases de test.</p>
+            <div class="btn-box" onclick="toggle('s6')">📷 Voir le cliché</div>
+            <div id="s6" class="hidden-content">
+                <img src="dog.jpg" class="img-display" alt="First Dog">
+                <p style="text-align:center; color:#888;">Lieu : Mexique. Sujet : Un chien près d'un stand de tacos.</p>
+            </div>
+        </div>
+
+        <div class="slide">
+            <h2>Évolution Visuelle</h2>
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;">
+                <div class="btn-box" onclick="showLogo('v1.jpg', 'Janvier 2010 : Le tout premier prototype.')">Janvier 2010</div>
+                <div class="btn-box" onclick="showLogo('v2.jpg', 'Octobre 2010 : Le logo officiel du lancement.')">Octobre 2010</div>
+                <div class="btn-box" onclick="showLogo('2011.jpg', 'Mai 2011 : Mise à jour des textures Polaroïd.')">Mai 2011</div>
+                <div class="btn-box" onclick="showLogo('now.avif', 'Mai 2016 : Passage au design minimaliste actuel.')">2016 - NOW</div>
+            </div>
+            <div id="logo-viewer" class="hidden-content" style="text-align: center;">
+                <img id="logo-img" src="" class="img-display">
+                <p id="logo-desc" style="font-style: italic;"></p>
+            </div>
+        </div>
+
+        <div class="slide">
+            <h2>Démographie et Audience</h2>
+            <p>Instagram est aujourd'hui dominé par une audience jeune et engagée :</p>
+            <p><strong>Âges :</strong> Plus de 60 % des utilisateurs ont entre 18 et 34 ans (Génération Z et Millennials).</p>
+            <p><strong>Genres :</strong> La répartition est presque équilibrée au niveau mondial, avec environ 51 % d'hommes et 49 % de femmes.</p>
+        </div>
+
+        <div class="slide">
+            <h2>Le Modèle Publicitaire</h2>
+            <p>Instagram génère des revenus via la <strong>publicité ciblée</strong>.</p>
+            <div class="btn-box" onclick="toggle('s8')">❓ C'est quoi le "Ciblage" ?</div>
+            <div id="s8" class="hidden-content">
+                <p>Le ciblage signifie qu'Instagram utilise vos données (ce que vous aimez, vos recherches, votre âge) pour vous montrer uniquement des publicités qui vous intéressent personnellement. Cela permet aux marques de ne pas gaspiller d'argent en montrant des produits aux mauvaises personnes.</p>
+            </div>
+            <p style="margin-top:10px;">Chaque année, cela rapporte environ 70 milliards de dollars à Meta.</p>
+        </div>
+
+        <div class="slide">
+            <h1>Conclusion</h1>
+            <p>Instagram a révolutionné notre façon de communiquer visuellement. En passant d'une simple application de filtres à un moteur économique majeur, elle a redéfini le marketing moderne.</p>
+            <p>Elle reste aujourd'hui la plateforme de référence pour les créateurs de contenu et les marques du monde entier.</p>
+            <div class="btn-box" style="background: var(--insta-gradient); border:none;">🔥 MERCI POUR VOTRE ÉCOUTE</div>
+        </div>
+    </main>
+
+    <footer>
+        <button class="nav-btn" id="prev" disabled>BACK</button>
+        <div id="slide-count">1 / 10</div>
+        <button class="nav-btn" id="next">NEXT</button>
+    </footer>
+
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        const prevBtn = document.getElementById('prev');
+        const nextBtn = document.getElementById('next');
+        const countTxt = document.getElementById('slide-count');
+        let index = 0;
+
+        function update() {
+            slides.forEach((s, i) => s.classList.toggle('active', i === index));
+            countTxt.innerText = (index + 1) + " / " + slides.length;
+            prevBtn.disabled = index === 0;
+            nextBtn.disabled = index === slides.length - 1;
+            document.querySelectorAll('.hidden-content').forEach(el => el.style.display = 'none');
+        }
+
+        function toggle(id) {
+            const el = document.getElementById(id);
+            el.style.display = (el.style.display === 'block') ? 'none' : 'block';
+        }
+
+        function showLogo(src, desc) {
+            const viewer = document.getElementById('logo-viewer');
+            document.getElementById('logo-img').src = src;
+            document.getElementById('logo-desc').innerText = desc;
+            viewer.style.display = 'block';
+        }
+
+        nextBtn.onclick = () => { if(index < slides.length - 1) { index++; update(); } };
+        prevBtn.onclick = () => { if(index > 0) { index--; update(); } };
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === "ArrowRight") nextBtn.click();
+            if (e.key === "ArrowLeft") prevBtn.click();
+        });
+    </script>
+</body>
+</html>
